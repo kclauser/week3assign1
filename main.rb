@@ -28,11 +28,10 @@ loop do
   end until CHOICES.include?(user_choice)
 
   if user_choice == "a"
+    person = Person.new
     puts "Add method chosen"
     puts "Enter name to add"
-    person = gets.chomp
-    @person = person
-    person = Person.new
+    person.name = gets.chomp
     puts "#{person.name} added"
     puts "enter phone number"
     person.phone = gets.chomp
@@ -46,7 +45,7 @@ loop do
     puts "enter slack"
     person.slack = gets.chomp
     puts "#{person.name}s slack is #{person.slack}"
-    people << @person
+    people << person.name
   elsif user_choice == "s"
     puts "Search method chosen"
     puts "Enter name to search"
