@@ -30,6 +30,7 @@ def search
       puts "#{person.name}'s address is #{person.address}"
       puts "#{person.name}'s github is #{person.github}"
       puts "#{person.name}'s slack is #{person.slack}"
+      puts "#{person.name}'s position is #{person.position}'"
     else
       puts "no match"
 
@@ -41,7 +42,7 @@ def delete
   user_delete_name = gets.chomp
   @people.each do |person|
     if user_delete_name == person.name
-      @people -= person
+      @people -= [person]
       puts "Record deleted"
     else
       puts "no match"
@@ -55,8 +56,13 @@ loop do
     user_choice = gets.chomp.downcase
   end until CHOICES.include?(user_choice)
 
+
+
   if user_choice == "a"
-    person = Person.new
+    puts "is this person a student or employee"
+    student_or_employee = gets.chomp
+    if student_or_employee == "student"
+    person = Student.new
     puts "Add method chosen"
     puts "Enter name to add"
     person.name = gets.chomp
@@ -74,6 +80,37 @@ loop do
     person.slack = gets.chomp
     puts "#{person.name}s slack is #{person.slack}"
     @people << person
+  elsif student_or_employee == "employee"
+    person = Employee.new
+    puts "Add method chosen"
+    puts "Enter name to add"
+    person.name = gets.chomp
+    puts "#{person.name} added"
+    puts "enter phone number"
+    person.phone = gets.chomp
+    puts "#{person.name}'s phone is #{person.phone}"
+    puts "enter address"
+    person.address = gets.chomp
+    puts "#{person.name}s address is #{person.address}"
+    puts "enter github"
+    person.github = gets.chomp
+    puts "#{person.name}s github is #{person.github}"
+    puts "enter slack"
+    person.slack = gets.chomp
+    puts "#{person.name}s slack is #{person.slack}"
+    puts "enter date hired"
+    person.date_hired = gets.chomp
+    puts "#{person.name} was hired in #{person.date_hired}"
+    puts "enter position"
+    person.position = gets.chomp
+    puts "#{person.name}s position is a #{person.position}"
+    puts "enter salary"
+    person.salary = gets.chomp
+    puts "#{person.salary}s salary is #{person.salary}"
+    @people << person
+  end
+
+
   elsif user_choice == "s"
     puts "Search method chosen"
     puts "Enter name to search"
@@ -89,21 +126,3 @@ loop do
 
   p @people.inspect
 end
-
-
-# debug stuff
-# puts "user_choice is #{user_choice}"
-
-
-
-# class Book
-#   # attr_accessor :title
-#
-#   def title
-#     @title
-#   end
-#
-#   def title=(new_title)
-#     @title = new_title
-#   end
-# end
