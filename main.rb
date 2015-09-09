@@ -45,14 +45,17 @@ loop do
     puts "enter slack"
     person.slack = gets.chomp
     puts "#{person.name}s slack is #{person.slack}"
-    people << person.name
+    people << person
   elsif user_choice == "s"
     puts "Search method chosen"
     puts "Enter name to search"
     user_search_name = gets.chomp
-    puts people
-    if people.include?(user_search_name)
+    if self.name.include? user_search_name
       puts "match"
+      puts "#{person.name}'s phone is #{person.phone}"
+      puts "#{person.name}'s address is #{person.address}"
+      puts "#{person.name}'s github is #{person.github}"
+      puts "#{person.name}'s slack is #{person.slack}"
     else
       puts "no match"
     end
@@ -71,11 +74,6 @@ end
 
 # debug stuff
 # puts "user_choice is #{user_choice}"
-# p add_person_name
-
-
-
-
 
 
 
