@@ -1,15 +1,15 @@
 class Person
   attr_accessor :name,
-                :phone,
-                :address,
-                :github,
-                :slack
+  :phone,
+  :address,
+  :github,
+  :slack
 end
 
 class Employee < Person
   attr_accessor :salary,
-                :position,
-                :date_hired
+  :position,
+  :date_hired
 end
 
 class Student < Person
@@ -19,7 +19,35 @@ end
 puts "Person Database System Message"
 
 CHOICES = %w(a s d q)
-people = []
+@people = []
+
+def search
+  user_search_name = gets.chomp
+  @people.each do |person|
+    if user_search_name == person.name
+      puts "match"
+      puts "#{person.name}'s phone is #{person.phone}"
+      puts "#{person.name}'s address is #{person.address}"
+      puts "#{person.name}'s github is #{person.github}"
+      puts "#{person.name}'s slack is #{person.slack}"
+    else
+      puts "no match"
+
+    end
+  end
+end
+
+def delete
+  user_delete_name = gets.chomp
+  @people.each do |person|
+    if user_delete_name == person.name
+      @people -= person
+      puts "Record deleted"
+    else
+      puts "no match"
+    end
+  end
+end
 
 loop do
   begin
@@ -45,30 +73,21 @@ loop do
     puts "enter slack"
     person.slack = gets.chomp
     puts "#{person.name}s slack is #{person.slack}"
-    people << person
+    @people << person
   elsif user_choice == "s"
     puts "Search method chosen"
     puts "Enter name to search"
-    user_search_name = gets.chomp
-    if self.name.include? user_search_name
-      puts "match"
-      puts "#{person.name}'s phone is #{person.phone}"
-      puts "#{person.name}'s address is #{person.address}"
-      puts "#{person.name}'s github is #{person.github}"
-      puts "#{person.name}'s slack is #{person.slack}"
-    else
-      puts "no match"
-    end
-
-
+    search
   elsif user_choice == "d"
     puts "Delete method chosen"
+    puts "Enter name to delete"
+    delete
   elsif user_choice == "q"
     puts "Quit method chosen"
     break
   end
 
-  p people.inspect
+  p @people.inspect
 end
 
 
