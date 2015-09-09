@@ -4,12 +4,30 @@ class Person
   :address,
   :github,
   :slack
+
+  def info
+    {
+      :name => name,
+      :phone => phone,
+      :address => address,
+      :github => github,
+      :slack => slack
+    }
+  end
 end
 
 class Employee < Person
   attr_accessor :salary,
   :position,
   :date_hired
+
+  def info
+    super.merge({
+      :salary => salary,
+      :position => position,
+      :date_hired => date_hired
+    })
+  end
 end
 
 class Student < Person
@@ -26,11 +44,10 @@ def search
   @people.each do |person|
     if user_search_name == person.name
       puts "match"
-      puts "#{person.name}'s phone is #{person.phone}"
-      puts "#{person.name}'s address is #{person.address}"
-      puts "#{person.name}'s github is #{person.github}"
-      puts "#{person.name}'s slack is #{person.slack}"
-      puts "#{person.name}'s position is #{person.position}'"
+      person.info.each do |key, value|
+        puts "#{person.name}'s #{key} is #{value}"
+      end
+    # end
     else
       puts "no match"
 
@@ -61,7 +78,7 @@ loop do
   if user_choice == "a"
     puts "is this person a student or employee"
     student_or_employee = gets.chomp
-    if student_or_employee == "student"
+    if student_or_employee == "s"
     person = Student.new
     puts "Add method chosen"
     puts "Enter name to add"
@@ -80,7 +97,7 @@ loop do
     person.slack = gets.chomp
     puts "#{person.name}s slack is #{person.slack}"
     @people << person
-  elsif student_or_employee == "employee"
+  elsif student_or_employee == "e"
     person = Employee.new
     puts "Add method chosen"
     puts "Enter name to add"
