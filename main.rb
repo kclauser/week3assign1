@@ -3,5 +3,5 @@ require_relative "employee"
 require_relative "student"
 require_relative "menu"
 
-menu.new
+menu = Menu.new
 menu.display
