@@ -10,11 +10,10 @@ class Student < Person
     super
   end
 
-def show
-  puts "result is #{self.class.name.downcase}"
-  info.each do |key, value|
-  puts "#{name}'s #{key} is #{value}"
+  def show
+    puts "result is #{self.class.name.downcase}"
+    info.each do |key, value|
+      puts "#{name}'s #{key} is #{value}"
+    end
   end
-end
-
 end

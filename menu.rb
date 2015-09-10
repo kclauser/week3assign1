@@ -71,9 +71,6 @@ class Menu
       puts "That name does not exist in the system."
     else
       person.show
-      if person.is_a?(Employee)
-        person.tenure
-      end
     end
   end
 

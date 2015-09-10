@@ -1,9 +1,9 @@
 class Person
   attr_accessor :name,
-  :phone,
-  :address,
-  :github,
-  :slack
+                :phone,
+                :address,
+                :github,
+                :slack
 
   def initialize(name, phone, address, github, slack)
     self.name = name
@@ -15,11 +15,11 @@ class Person
 
   def info
     {
-      :name => name,
-      :phone => phone,
-      :address => address,
-      :github => github,
-      :slack => slack
+      name: name,
+      phone: phone,
+      address: address,
+      github: github,
+      slack: slack
     }
   end
 end
