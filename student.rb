@@ -9,4 +9,12 @@ class Student < Person
   def initialize(*args)
     super
   end
+
+def show
+  puts "result is #{self.class.name.downcase}"
+  info.each do |key, value|
+  puts "#{name}'s #{key} is #{value}"
+  end
+end
+
 end
