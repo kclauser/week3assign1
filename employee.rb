@@ -3,8 +3,8 @@ require 'date'
 
 class Employee < Person
   attr_accessor :salary,
-  :position,
-  :date_hired
+                :position,
+                :date_hired
 
   def initialize(name, phone, address, github, slack, date_hired, position, salary)
     self.date_hired = date_hired
@@ -17,11 +17,10 @@ class Employee < Person
   def show
     puts "result is #{self.class.name.downcase}"
     info.each do |key, value|
-    puts "#{name}'s #{key} is #{value}"
-
-
-
+      puts "#{name}'s #{key} is #{value}"
     end
+
+    tenure
   end
 
   def tenure
@@ -32,13 +31,11 @@ class Employee < Person
     puts "#{name} has been employed for #{today.year - parse_date_hired.year} years."
   end
 
-
   def info
     super.merge({
-      :salary => salary,
-      :position => position,
-      :date_hired => date_hired
+      salary: salary,
+      position: position,
+      date_hired: date_hired
       })
   end
-
 end
